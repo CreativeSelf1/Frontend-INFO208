@@ -1,0 +1,104 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+section{
+    display: flex;
+    height: 470px;
+    margin-top: 80px;
+}
+section img{
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: 8;
+    transition: .5s ease;
+}
+section img:hover{
+    cursor: crosshair;
+    width: 300px;
+    opacity: 1;
+    filter: contrast(120%);
+}
+
+
+.container{
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cards {
+    border-radius: 5px;
+    border: 1px solid rgb(9, 9, 9);
+    margin-bottom: 20px;
+}
+
+.cards img {
+    width: 270px;
+    height: 200px;
+}
+.search {
+    width: 100%;
+    margin-bottom: 0px;
+  }
+  
+.search img{
+    margin-top: 80px;
+    width: 1540px;
+    height: 400px;
+
+}
+/* Estilo para el nuevo div centrado */
+.centrado {
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+header {
+    position: fixed;
+    padding-top: 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; 
+    z-index: 1000;
+    padding: 20px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.section-card{
+    margin-top: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    max-width: 80%;
+
+}
+
+.card-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+.show-more-container {
+    position: relative;
+    margin-top: 20px; /* Ajusta el valor según sea necesario */
+    margin-left: 50%;
+    margin-bottom: 50px;
+    border-radius: 8px;
+  }
+
+.show-more-button:hover {
+    background-color: #020202;
+    color: #fff;
+    transition: .3s ease-in;
+    border-radius: inherit;
+}

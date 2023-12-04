@@ -2,6 +2,19 @@ body, html {
     margin: 0;
     padding: 0;
 }
+
+header {
+    position: fixed;
+    padding-top: 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; 
+    z-index: 1000;
+    padding: 20px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 section{
     display: flex;
     height: 470px;
@@ -21,7 +34,7 @@ section img:hover{
     filter: contrast(120%);
 }
 
-
+/*  */
 .container{
     margin-top: 30px;
     flex-wrap: wrap;
@@ -49,7 +62,7 @@ section img:hover{
     height: 400px;
 
 }
-/* Estilo para el nuevo div centrado */
+
 .centrado {
     text-align: center;
     position: absolute;
@@ -61,18 +74,7 @@ section img:hover{
     border-radius: 8px;
 }
 
-header {
-    position: fixed;
-    padding-top: 20px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff; 
-    z-index: 1000;
-    padding: 20px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
+/* estilos de vista para los servicios */
 .section-card{
     margin-top: 70px;
     display: flex;
@@ -101,4 +103,79 @@ header {
     color: #fff;
     transition: .3s ease-in;
     border-radius: inherit;
+}
+
+
+/* estilos de la ventana de detalles de un servicio */
+
+.columns-service{
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+    gap: 20px;
+    background-color: #e8e2e2;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 80px;
+
+}
+.details-services{
+    margin-top: 80px;
+}
+
+.column-opinion{
+    flex: none;
+    width: 33.33%;
+    height: 40%;
+    /* border: solid 1px; */
+    padding-left: 20px;
+    background-color:#fff;
+    min-height: 300px;
+
+}
+
+.columns-details{
+    flex: none;
+    width: 33.33%;
+    /* border: solid 1px; */
+    padding-left: 20px;
+    background-color:#fff;
+}
+
+.imgService {
+    display: flex;
+   justify-content: center;
+}
+
+.imgService img{
+    border: solid 1px;
+    width: 300px;
+    height: 300px;
+}
+
+.comments{
+    margin-top: 0px;
+    margin-bottom: 100px;
+}
+
+.comments-list{
+    padding-left: 30px;
+}
+
+.comment-box{
+    border: solid 1px;
+    padding-left: 10px;
+    margin-top: 20px;
+    width: 50%;
+    height: 70px;
+    border-radius: 10px;
+}
+
+.com-eva{
+    padding-left: 30px;
+    display: flex;
+    gap: 30%;
+    font-size: medium;
+    font-weight: 700;
+    margin-bottom: 50px;
 }

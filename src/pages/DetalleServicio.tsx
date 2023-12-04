@@ -26,25 +26,49 @@ const DetalleServicio = () => {
 
 
   return (
-    <div className="mt-5">
-      <h1>Detalle del Servicio</h1>
-      {servicio && (
-        <div className="mt-5">
-          <p>Nombre del Servicio: {servicio[0].nombre}</p>
-          <p>ID del Servicio: {servicio[0].servicio_ID}</p>
-          <p>Ubicación: {servicio[0].ubicacion}</p>
-          <Link to={`/evaluacion/${servicio[0].servicio_ID}`}>
-            <button className="mt-10">Evaluar</button>
-          </Link>
-        </div>
-      )}
-      <div className='mt-10'>
-        <h2>Comentarios</h2>
-        {comentarios.map((comentario, index) => (
-          <div className='mt-2' key={index}>
-            <p>{comentario.comentario}</p>
+    <div className="details-services">
+      <div className="service_profile">
+        {servicio && (
+          <div className="mt-5">
+            <p className="font-bold">{servicio[0].nombre}</p>
+            <p>ID del Servicio: {servicio[0].servicio_ID}</p>
+            <p>Ubicación: {servicio[0].ubicacion}</p>
+            <div className="imgService">
+              <img src={servicio[0].imgURL}></img>
+            </div>
           </div>
-        ))}
+        )}
+      </div>
+
+      <div className="columns-service">
+        <div className="column-opinion">
+          <h1 className="font-bold">Puntuaciones</h1>
+        </div>
+        <div className="columns-details">
+          <h1 className="font-bold">Detalles</h1>
+        </div>
+      </div>
+
+      <div className="comments">
+        <div className='com-eva'> 
+          <div>
+            <h1> Comentarios </h1>
+          </div>
+          <div>
+            {servicio && (
+              <Link to={`/evaluacion/${servicio[0].servicio_ID}`}>
+                <button>Crear nueva evaluación</button>
+              </Link>
+            )}
+          </div>
+        </div>
+        <div className="comments-list">
+          {comentarios.map((comentario, index) => (
+            <div className="comment-box" key={index}>
+              <p>{comentario.comentario}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

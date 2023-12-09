@@ -1,7 +1,7 @@
 # FRONTEND-INFO208
 Frontend desplegado en https://www.netlify.com/
 
-`https://prismatic-muffin-1a52aa.netlify.app/`
+`https://65749b5dc999e57f24826a2d--hilarious-phoenix-3dba5b.netlify.app/`
 
 ## Dependencias necesarias
 

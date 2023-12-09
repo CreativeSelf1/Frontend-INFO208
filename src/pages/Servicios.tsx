@@ -1,14 +1,14 @@
-// Servicios.tsx
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ServicioCard from '../components/ServicioCard';
+import SearchBar from '../components/SearchBar';
 import "../app.css"
 
 const Servicios = () => {
   const [data, setData] = useState([]);
   const [visibleServices, setVisibleServices] = useState(8);
+  const [searchTerm, setSearchTerm] = useState('');
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,6 +27,8 @@ const Servicios = () => {
     setVisibleServices((prevVisibleServices) => prevVisibleServices + 8);
   };
 
+  const filteredServices = data.filter(service => service.nombre.toLowerCase().includes(searchTerm.toLowerCase()));
+
   return (
     <div className="mb-5">
       <section>
@@ -36,9 +38,12 @@ const Servicios = () => {
         <img src="https://pbs.twimg.com/media/FRxunw3X0AApkSU?format=jpg&name=large" loading="lazy"></img>
         <img src="https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2021/11/sala-cine-cadena-amc-estados-unidos-2529691.jpg?tf=3840x" loading="lazy"></img>
       </section>
+      <div className='justify-center flex mt-4 '>
+        <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+      </div>
       <div className="card-container">
         <div className="section-card">
-          {data.slice(0, visibleServices).map((service) => (
+          {filteredServices.slice(0, visibleServices).map((service) => (
             <ServicioCard key={service.servicio_id} servicio={service} />
           ))}
           <div className="show-more-container mb-7">

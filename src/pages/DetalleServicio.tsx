@@ -52,7 +52,7 @@ const DetalleServicio = () => {
       <div className="comments">
         <div className='com-eva'> 
           <div>
-            <h1> Comentarios </h1>
+            <h1> Comentarios ({comentarios.length}) </h1>
           </div>
           <div>
             {servicio && (

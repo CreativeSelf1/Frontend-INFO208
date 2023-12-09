@@ -179,3 +179,34 @@ section img:hover{
     font-weight: 700;
     margin-bottom: 50px;
 }
+
+
+/* estilos evaluacion */
+
+.container-evaluation{
+    padding-top: 100px;
+    padding-left: 80px;
+}
+
+.container-evaluation h1{
+    font-size: x-large;
+    font-weight: 700;
+}
+
+.opinion-form {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+.opinion-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical; 
+  }

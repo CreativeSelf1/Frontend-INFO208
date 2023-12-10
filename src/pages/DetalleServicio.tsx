@@ -30,7 +30,7 @@ const DetalleServicio = () => {
       <div className="service_profile">
         {servicio && (
           <div className="mt-5">
-            <p className="font-bold">{servicio[0].nombre}</p>
+            <h1 className="font-bold text-3xl mb-2">{servicio[0].nombre}</h1>
             <p>ID del Servicio: {servicio[0].servicio_ID}</p>
             <p>Ubicación: {servicio[0].ubicacion}</p>
             <div className="imgService">

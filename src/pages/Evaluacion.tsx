@@ -8,6 +8,21 @@ const Evaluacion = () => {
   const [opinion, setOpinion] = useState('');
   const [enviado, setEnviado] = useState(false);
   const [aceptaTerminos, setAceptaTerminos] = useState(false);
+  const [parametros, SetParametros] = useState([]);
+  const [notas, setNotas] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://info208-backend-observatorio-calidad.onrender.com/api/command/parametros/${id}`);
+        SetParametros(response.data);
+      } catch (error) {
+        console.error('Error al obtener datos de servicios:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleOpinionChange = (event) => {
     setOpinion(event.target.value);
@@ -17,29 +32,71 @@ const Evaluacion = () => {
     setAceptaTerminos(!aceptaTerminos);
   };
 
+  const handleNotaChange = (nombreParametro, nuevaNota) => {
+    setNotas({
+      ...notas,
+      [nombreParametro]: nuevaNota,
+    });
+  };
+
+  useEffect(() => {
+    const notasIniciales = {};
+    parametros.forEach(parametro => {
+      notasIniciales[parametro.nombre_parametro] = "1";
+    });
+    setNotas(notasIniciales);
+  }, [parametros]);
+
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!aceptaTerminos) {
-      alert('Debes aceptar los términos antes de enviar tu comentario.');
-      return;
+    try {
+      event.preventDefault();
+  
+      if (!aceptaTerminos) {
+        alert('Debes aceptar los términos antes de enviar tu comentario.');
+        return;
+      }
+      const data = { servicio_id: id, comentario: opinion };
+      console.log('Datos a Enviar:', data);
+  
+      setEnviado(true);
+      console.log('Notas actuales:', notas);
+  
+      await axios.post('https://info208-backend-observatorio-calidad.onrender.com/api/command/comentario', data);
+  
+      setTimeout(() => {
+        setEnviado(false);
+        navigate(`/detalle-servicio/${id}`);
+        window.location.reload();
+      }, 2000);
+    } catch (error) {
+      console.error('Error al enviar el comentario:', error);
+      alert('Ocurrió un error al enviar el comentario. Por favor, inténtalo de nuevo.');
     }
-
-    const data = { servicio_id: id, comentario: opinion };
-    console.log('Datos a Enviar:', data);
-    setEnviado(true);
-    setTimeout(() => {
-      setEnviado(false);
-      navigate(`/detalle-servicio/${id}`);
-      window.location.reload();
-    }, 2000);
-    await axios.post('https://info208-backend-observatorio-calidad.onrender.com/api/command/comentario', data);
   };
   
   return (
     <div className="container-evaluation">
+      <div className="Parametros">
+        <h1> Parámetros evaluados</h1>
+        {parametros.map((dato, index) => (
+          <div key={index} className="parametro-item mb-2 mt-2">
+            <p>{dato.nombre_parametro}</p>
+            <input
+              type="range"
+              id={`nota-${index}`}
+              min="1"
+              max="10"
+              value={notas[dato.nombre_parametro] || "1"}
+              onChange={(e) =>
+                handleNotaChange(dato.nombre_parametro, e.target.value)
+              }
+            />
+            <span>{notas[dato.nombre_parametro]}</span>
+          </div>
+        ))}
+      </div>
       <h1>Escribe tu evaluación</h1>
-      <div className="mt-3">
+      <div className="text-area">
         <form onSubmit={handleFormSubmit} className="opinion-form">
           <label>
             <textarea
@@ -58,11 +115,13 @@ const Evaluacion = () => {
                 checked={aceptaTerminos}
                 onChange={handleAceptaTerminosChange}
               />
-              Acepto que mi comentario pueda ser utilizado con fines estadísticos
-              y para mejorar los servicios.
+              Acepto que los parámetros evaluados y mi comentario pueda ser utilizado con fines
+              estadísticos para mejorar los servicios.
             </label>
           </p>
-          <button className='font-bold mt-3' type="submit">Enviar</button>
+          <button className="font-bold mt-3" type="submit">
+            Enviar
+          </button>
           {enviado && <p>Comentario enviado. Redirigiendo...</p>}
         </form>
       </div>

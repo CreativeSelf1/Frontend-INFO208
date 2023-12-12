@@ -12,7 +12,7 @@ const Servicios = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://info208-backend-observatorio-calidad.onrender.com/api/command/services');
+        const response = await axios.get('https://backend-info208-production.up.railway.app/api/command/services');
         setData(response.data);
       } catch (error) {
         console.error('Error al obtener datos de servicios:', error);

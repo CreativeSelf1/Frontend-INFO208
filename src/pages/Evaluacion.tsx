@@ -61,7 +61,7 @@ const Evaluacion = () => {
       setEnviado(true);
       console.log('Notas actuales:', notas);
   
-      await axios.post('https://backend-info208-production.up.railway.app/api/command/comentario', data);
+      await axios.post('https://test-deploy-production-4480.up.railway.app/api/command/comentario', data);
   
       setTimeout(() => {
         setEnviado(false);

@@ -11,10 +11,10 @@ const DetalleServicio = () => {
   useEffect(() => {
     const fetchServicio = async () => {
       try {
-        const response = await axios.get(`https://backend-info208-production.up.railway.app/api/command/type/${id}`);
+        const response = await axios.get(`https://test-deploy-production-4480.up.railway.app/api/command/type/${id}`);
         setServicio(response.data);
 
-        const comentariosResponse = await axios.get(`https://backend-info208-production.up.railway.app/api/command/comentarios/${id}`);
+        const comentariosResponse = await axios.get(`https://test-deploy-production-4480.up.railway.app/api/command/comentarios/${id}`);
         setComentarios(comentariosResponse.data);
       } catch (error) {
         console.error("Error al obtener datos del servicio:", error);
